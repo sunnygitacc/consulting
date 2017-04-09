@@ -1,0 +1,117 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<import resource="classpath:cache.xml"/>
+	<import resource="classpath:database.xml"/>
+
+	<bean class="com.tecsolvent.wizspeak.service.TestService" id="testService">
+		<property name="testDao" ref="testDao"/>
+		<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache"/>
+	</bean>
+	<bean class="com.tecsolvent.wizspeak.service.AmbitionService" id="ambitionService">
+		<property name="friendService" >
+			<bean id="friendService"  class="com.tecsolvent.wizspeak.service.FriendService" >
+				<property name="userDao" ref="userDao" />
+				<property name="friendDao" ref="friendDao" />
+				<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+
+			</bean>
+		</property>
+		<property name="groupService" >
+			<bean id="groupService"  class="com.tecsolvent.wizspeak.service.GroupService" >
+				<property name="userDao" ref="userDao" />
+				<property name="groupDao" ref="groupDao" />
+				<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+
+			</bean>
+		</property>
+		<property name="userService" >
+			<bean id="userService"  class="com.tecsolvent.wizspeak.service.UserService" >
+				<property name="userDao" ref="userDao" />
+				<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+
+			</bean>
+		</property>
+		<property name="mentorService" >
+			<bean id="mentorService" class="com.tecsolvent.wizspeak.service.MentorService" >
+				<property name="userDao" ref="userDao" />
+				<property name="mentorDao" ref="mentorDao" />
+				<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+			</bean>
+
+		</property>
+		<property name="postService" >
+			<bean id="postService" class="com.tecsolvent.wizspeak.service.PostService" >
+				<property name="userDao" ref="userDao" />
+				<property name="friendDao" ref="friendDao" />
+				<property name="postDao" ref="postDao" />
+				<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+			</bean>
+
+		</property>
+		<property name="ambitionDao" ref="ambitionDao"/>
+		<property name="groupDao" ref="groupDao" />
+		<property name="userDao" ref="userDao" />
+		<property name="postDao" ref="postDao" />
+		<property name="commentDao" ref="commentDao" />
+		<property name="likeDao" ref="likeDao" />
+		<property name="friendDao" ref="friendDao" />
+		<property name="mentorDao" ref="mentorDao" />
+		<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache"/>
+	</bean>
+	<bean class="com.tecsolvent.wizspeak.service.HobbyService" id="hobbyService">
+		<property name="ambitionDao" ref="ambitionDao"/>
+		<property name="groupDao" ref="groupDao" />
+		<property name="userDao" ref="userDao" />
+		<property name="postDao" ref="postDao" />
+		<property name="commentDao" ref="commentDao" />
+		<property name="likeDao" ref="likeDao" />
+		<property name="friendDao" ref="friendDao" />
+		<property name="mentorDao" ref="mentorDao" />
+		<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache"/>
+	</bean>
+	<bean class="com.tecsolvent.wizspeak.service.GroupService" id="groupService" >
+		<property name="groupDao" ref="groupDao" />
+		<property name="userDao" ref="userDao" />
+		<property name="friendService" >
+			<bean id="friendService"  class="com.tecsolvent.wizspeak.service.FriendService" >
+				<property name="userDao" ref="userDao" />
+				<property name="friendDao" ref="friendDao" />
+				<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+
+			</bean>
+		</property>
+		<property name="mentorService" >
+			<bean id="mentorService" class="com.tecsolvent.wizspeak.service.MentorService" >
+				<property name="userDao" ref="userDao" />
+				<property name="mentorDao" ref="mentorDao" />
+				<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+			</bean>
+
+		</property>
+		<property name="postService">
+			<bean id="postService" class="com.tecsolvent.wizspeak.service.PostService" >
+				<property name="postDao" ref="postDao" />
+				<property name="groupDao" ref ="groupDao" />
+				<property name="userDao" ref ="userDao" />
+			</bean>
+		</property>
+		<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+	</bean>
+
+	<bean class="com.tecsolvent.wizspeak.service.UserService" id="userService" >
+		<property name="userDao" ref="userDao" />
+		<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+	</bean>
+	<bean class="com.tecsolvent.wizspeak.service.FriendService" id="friendService" >
+		<property name="userDao" ref="userDao" />
+		<property name="friendDao" ref="friendDao" />
+		<property name="guavaAndCouchbaseCache" ref="guavaAndCouchbaseCache" />
+	</bean>
+	<bean class="com.tecsolvent.wizspeak.service.MentorService" id="mentorService">
+
+
+	</bean>
+</beans>
